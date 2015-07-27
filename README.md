@@ -66,7 +66,7 @@ end
 
 *  x
 *  y
-  isDown
+*  isDown
 
 ####ch2d.view
 
