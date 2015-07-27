@@ -34,10 +34,13 @@ end
 *  SFML => 2.0
 
 ## Todo
-
+*  Merge src/ch2d/Engine.cpp and src/ch2d/LuaInterface.cpp
 *  Parse command line arguments
+** Currently "game/game.lua" is hardcoded to load.
 *  Add sound bindings
-*  Implement collision check and/or Box2D
+*  Add SFML shape bindings (circle, rectangle)
+*  Lua native quadtree and collision detection
+*  Create list of SFML::Keyboard::Keys for Lua
 
 ## Currently supported bindings
 
