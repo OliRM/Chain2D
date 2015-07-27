@@ -27,6 +27,18 @@ end
 
 ```
 
+## Requirements
+
+*  Cmake => 2.8
+*  Lua => 5.2
+*  SFML => 2.0
+
+## Todo
+
+*  Parse command line arguments
+*  Add sound bindings
+*  Implement collision check and/or Box2D
+
 ## Currently supported bindings
 
 ####ch2d.sprite
