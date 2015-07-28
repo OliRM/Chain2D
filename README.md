@@ -38,7 +38,6 @@ end
 ```
 
 ## Todo
-*  Merge src/ch2d/Engine.cpp and src/ch2d/LuaInterface.cpp
 *  Parse command line arguments
   * Currently "game/game.lua" is hardcoded to load.
 *  Support configuration files
@@ -48,7 +47,6 @@ end
   *  window modification bindings
 *  Lua native quadtree and collision detection
 *  Create a set of Lua constants equivelent to the sf::Keyboard::Keys SFML enumeration
-*  Potential overhaul to OpenGL for native shader support and general efficiecy
 
 ## Currently supported bindings
 
