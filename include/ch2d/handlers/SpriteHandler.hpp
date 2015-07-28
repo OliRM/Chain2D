@@ -12,11 +12,11 @@
 
 namespace ch2d
 {
-	class SpriteHandler : public Handler<sf::Sprite>
-	{
-	public:
-		unsigned int create(void);
-	};
+    class SpriteHandler : public Handler<sf::Sprite>
+    {
+    public:
+        unsigned int create(void);
+    };
 }
 
 #endif

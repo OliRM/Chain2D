@@ -3,16 +3,16 @@
 
 namespace ch2d
 {
-	unsigned int TextureHandler::load(const std::string& filename)
-	{
-		unsigned int id = 0;
+    unsigned int TextureHandler::load(const std::string& filename)
+    {
+        unsigned int id = 0;
 
-		std::shared_ptr<sf::Texture> texture = std::make_shared<sf::Texture>();
+        std::shared_ptr<sf::Texture> texture = std::make_shared<sf::Texture>();
 
-		texture->loadFromFile(filename);
+        texture->loadFromFile(filename);
 
-		id = mPointerStorage.add(texture);
+        id = mPointerStorage.add(texture);
 
-		return id;
-	}
+        return id;
+    }
 }

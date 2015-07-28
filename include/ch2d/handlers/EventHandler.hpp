@@ -18,36 +18,36 @@ extern "C"
 
 namespace ch2d
 {
-	struct Mouse
-	{
-	    LUA_NUMBER x;
-	 	LUA_NUMBER y;
-	    bool buttons[sf::Mouse::Button::ButtonCount];
-	};
+    struct Mouse
+    {
+        LUA_NUMBER x;
+        LUA_NUMBER y;
+        bool buttons[sf::Mouse::Button::ButtonCount];
+    };
 
-	class EventHandler
-	{
-	public:
-		// Constructor
-		EventHandler(sf::RenderWindow&);
+    class EventHandler
+    {
+    public:
+        // Constructor
+        EventHandler(sf::RenderWindow&);
 
-		// update
-		void update(void);
+        // update
+        void update(void);
 
-		// Keyboard methods
-		bool keyboard_isDown(unsigned int);
+        // Keyboard methods
+        bool keyboard_isDown(unsigned int);
 
-		// Mouse methods
-		LUA_NUMBER mouse_x(void);
-		LUA_NUMBER mouse_y(void);
-		bool mouse_isDown(unsigned int);
+        // Mouse methods
+        LUA_NUMBER mouse_x(void);
+        LUA_NUMBER mouse_y(void);
+        bool mouse_isDown(unsigned int);
 
-	private:
-		// Window reference
-		sf::RenderWindow& mRenderWindow;
-		bool mKeys[sf::Keyboard::KeyCount];
-		Mouse mMouse;
-	};
+    private:
+        // Window reference
+        sf::RenderWindow& mRenderWindow;
+        bool mKeys[sf::Keyboard::KeyCount];
+        Mouse mMouse;
+    };
 }
 
 #endif

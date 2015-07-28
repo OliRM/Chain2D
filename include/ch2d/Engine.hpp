@@ -25,19 +25,19 @@ extern "C"
 
 namespace ch2d
 {
-	class Engine
-	{
-	public:
+    class Engine
+    {
+    public:
         // Constructor
         Engine(void);
 
         // Functions
-		void              processArguments(int argc, char* argv[]);
-		int               run(void);
-		bool              isRunning(void) const;
-		void              quit(void);
+        void processArguments(int argc, char* argv[]);
+        int  run(void);
+        bool isRunning(void) const;
+        void quit(void);
 
-	private:
+    private:
         // Render window
         sf::RenderWindow mRenderWindow;
 
@@ -48,20 +48,20 @@ namespace ch2d
         LuaInterface mLuaInterface;
 
         // Default render window settings
-        unsigned int        mWidth;
-        unsigned int        mHeight;
-        unsigned int        mBitsPerPixel;
-        sf::VideoMode       mVideoMode;
-        std::string         mTitle;
-        uint32_t            mStyle;
+        unsigned int  mWidth;
+        unsigned int  mHeight;
+        unsigned int  mBitsPerPixel;
+        sf::VideoMode mVideoMode;
+        std::string   mTitle;
+        uint32_t      mStyle;
 
         // Time storage
         std::chrono::high_resolution_clock::time_point mCurrentTime, mNextTime;
         std::chrono::nanoseconds mDeltaTime;
 
         // Functions
-		void cleanup(void);
-	};
+        void cleanup(void);
+    };
 }
 
 #endif

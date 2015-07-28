@@ -12,11 +12,11 @@
 
 namespace ch2d
 {
-	class TextureHandler : public Handler<sf::Texture>
-	{
-	public:
-		unsigned int load(const std::string&);
-	};
+    class TextureHandler : public Handler<sf::Texture>
+    {
+    public:
+        unsigned int load(const std::string&);
+    };
 }
 
 #endif

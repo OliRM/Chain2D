@@ -12,11 +12,11 @@
 
 namespace ch2d
 {
-	class ViewportHandler : public Handler<sf::FloatRect>
-	{
-	public:
-		unsigned int create(float, float, float, float);
-	};
+    class ViewportHandler : public Handler<sf::FloatRect>
+    {
+    public:
+        unsigned int create(float, float, float, float);
+    };
 }
 
 #endif

@@ -13,11 +13,11 @@
 
 namespace ch2d
 {
-	class ViewHandler : public Handler<sf::View>
-	{
-	public:
-		unsigned int create(float, float, float, float);
-	};
+    class ViewHandler : public Handler<sf::View>
+    {
+    public:
+        unsigned int create(float, float, float, float);
+    };
 }
 
 #endif

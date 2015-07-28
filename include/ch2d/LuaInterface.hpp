@@ -24,11 +24,11 @@ extern "C"
 
 namespace ch2d
 {
-	class LuaInterface
-	{
-	public:
-		// Constructor
-		LuaInterface(sf::RenderWindow&);
+    class LuaInterface
+    {
+    public:
+        // Constructor
+        LuaInterface(sf::RenderWindow&);
 
         // General methods
         void update(LUA_NUMBER);
@@ -40,7 +40,7 @@ namespace ch2d
         // Window methods
         void window_setView(unsigned int);
 
-		// Sprite methods
+        // Sprite methods
         unsigned int sprite_create(void);
         bool         sprite_draw(unsigned int);
         bool         sprite_remove(unsigned int);
@@ -71,16 +71,16 @@ namespace ch2d
         unsigned int viewport_create(LUA_NUMBER, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER);
         bool         viewport_remove(unsigned int);
 
-	private:
-		// Lua State
-		sel::State mLuaState;
+    private:
+        // Lua State
+        sel::State mLuaState;
 
         // Render window
         sf::RenderWindow& mRenderWindow;
 
-		// Asset handlers
-		TextureHandler mTextureHandler;
-		SpriteHandler  mSpriteHandler;
+        // Asset handlers
+        TextureHandler mTextureHandler;
+        SpriteHandler  mSpriteHandler;
 
         // Event Handler
         EventHandler mEventHandler;
@@ -93,7 +93,7 @@ namespace ch2d
 
         // Variables
         bool mRunning;
-	};
+    };
 }
 
 #endif
