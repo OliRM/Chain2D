@@ -1,9 +1,9 @@
 // ch2d
-#include <ch2d/LuaInterface.hpp>
+#include <ch2d/System.hpp>
 
 namespace ch2d
 {
-    void LuaInterface::window_setView(unsigned int id)
+    void System::window_setView(unsigned int id)
     {
         std::shared_ptr<sf::View> view = mViewHandler.get(id);
 

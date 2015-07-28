@@ -1,9 +1,9 @@
 // ch2d
-#include <ch2d/LuaInterface.hpp>
+#include <ch2d/System.hpp>
 
 namespace ch2d
 {
-    void LuaInterface::system_quit(void)
+    void System::system_quit(void)
     {
         mRunning = {false};
     }

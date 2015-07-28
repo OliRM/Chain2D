@@ -5,7 +5,7 @@
 #include <memory>
 
 // ch2d
-#include <ch2d/general/Handler.hpp>
+#include <ch2d/common/Handler.hpp>
 
 // SFML
 #include <SFML/Graphics.hpp>

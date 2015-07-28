@@ -1,14 +1,14 @@
 // ch2d
-#include <ch2d/LuaInterface.hpp>
+#include <ch2d/System.hpp>
 
 namespace ch2d
 {
-    unsigned int LuaInterface::sprite_create(void)
+    unsigned int System::sprite_create(void)
     {
         return mSpriteHandler.create();
     }
 
-    bool LuaInterface::sprite_draw(unsigned int id)
+    bool System::sprite_draw(unsigned int id)
     {
         std::shared_ptr<sf::Sprite> sprite = mSpriteHandler.get(id);
 
@@ -17,12 +17,12 @@ namespace ch2d
         return true;
     }
 
-    bool LuaInterface::sprite_remove(unsigned int id)
+    bool System::sprite_remove(unsigned int id)
     {
         return mSpriteHandler.remove(id);
     }
 
-    bool LuaInterface::sprite_setPosition(unsigned int id, LUA_NUMBER x, LUA_NUMBER y)
+    bool System::sprite_setPosition(unsigned int id, LUA_NUMBER x, LUA_NUMBER y)
     {
         std::shared_ptr<sf::Sprite> sprite = mSpriteHandler.get(id);
 
@@ -36,7 +36,7 @@ namespace ch2d
         return true;
     }
 
-    bool LuaInterface::sprite_setOrigin(unsigned int id, LUA_NUMBER x, LUA_NUMBER y)
+    bool System::sprite_setOrigin(unsigned int id, LUA_NUMBER x, LUA_NUMBER y)
     {
         std::shared_ptr<sf::Sprite> sprite = mSpriteHandler.get(id);
 
@@ -50,7 +50,7 @@ namespace ch2d
         return true;
     }
 
-    bool LuaInterface::sprite_setRotation(unsigned int id, LUA_NUMBER rotation)
+    bool System::sprite_setRotation(unsigned int id, LUA_NUMBER rotation)
     {
         std::shared_ptr<sf::Sprite> sprite = mSpriteHandler.get(id);
 
@@ -64,7 +64,7 @@ namespace ch2d
         return true;
     }
 
-    void LuaInterface::sprite_setTexture(unsigned int spriteId, unsigned int textureId)
+    void System::sprite_setTexture(unsigned int spriteId, unsigned int textureId)
     {
         std::shared_ptr<sf::Sprite> sprite = mSpriteHandler.get(spriteId);
 
@@ -73,7 +73,7 @@ namespace ch2d
         sprite->setTexture(*texture);
     }
 
-    void LuaInterface::sprite_setTextureRect(unsigned int id, LUA_NUMBER x, LUA_NUMBER y, LUA_NUMBER width, LUA_NUMBER height)
+    void System::sprite_setTextureRect(unsigned int id, LUA_NUMBER x, LUA_NUMBER y, LUA_NUMBER width, LUA_NUMBER height)
     {
         std::shared_ptr<sf::Sprite> sprite = mSpriteHandler.get(id);
 

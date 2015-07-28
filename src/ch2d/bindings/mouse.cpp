@@ -1,19 +1,19 @@
 // ch2d
-#include <ch2d/LuaInterface.hpp>
+#include <ch2d/System.hpp>
 
 namespace ch2d
 {
-    LUA_NUMBER LuaInterface::mouse_x(void)
+    LUA_NUMBER System::mouse_x(void)
     {
         return mEventHandler.mouse_x();
     }
 
-    LUA_NUMBER LuaInterface::mouse_y(void)
+    LUA_NUMBER System::mouse_y(void)
     {
         return mEventHandler.mouse_y();
     }
 
-    bool LuaInterface::mouse_isDown(unsigned int key)
+    bool System::mouse_isDown(unsigned int key)
     {
         return mEventHandler.mouse_isDown(key);
     }

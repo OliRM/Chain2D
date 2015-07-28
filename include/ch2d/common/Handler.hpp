@@ -5,7 +5,7 @@
 #include <memory>
 
 // ch2d
-#include <ch2d/general/PointerStorage.hpp>
+#include <ch2d/common/PointerStorage.hpp>
 
 namespace ch2d
 {
