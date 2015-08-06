@@ -5,3 +5,4 @@ A small, barebones 2D engine used to create games in Lua, built with C++ and SFM
 
 *  Lua >= 5.2
 *  SFML >= 2.0
+*  A fully C++11 complient compiler
