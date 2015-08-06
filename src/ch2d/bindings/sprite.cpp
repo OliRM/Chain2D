@@ -10,7 +10,7 @@ namespace ch2d
 
     bool System::sprite_draw(unsigned int id)
     {
-        std::shared_ptr<sf::Sprite> sprite = mSpriteHandler.get(id);
+        auto sprite = mSpriteHandler.get(id);
 
         mRenderWindow.draw(*sprite);
 
@@ -24,7 +24,7 @@ namespace ch2d
 
     bool System::sprite_setPosition(unsigned int id, LUA_NUMBER x, LUA_NUMBER y)
     {
-        std::shared_ptr<sf::Sprite> sprite = mSpriteHandler.get(id);
+        auto sprite = mSpriteHandler.get(id);
 
         if(nullptr == sprite)
         {
@@ -38,7 +38,7 @@ namespace ch2d
 
     bool System::sprite_setOrigin(unsigned int id, LUA_NUMBER x, LUA_NUMBER y)
     {
-        std::shared_ptr<sf::Sprite> sprite = mSpriteHandler.get(id);
+        auto sprite = mSpriteHandler.get(id);
 
         if(nullptr == sprite)
         {
@@ -52,7 +52,7 @@ namespace ch2d
 
     bool System::sprite_setRotation(unsigned int id, LUA_NUMBER rotation)
     {
-        std::shared_ptr<sf::Sprite> sprite = mSpriteHandler.get(id);
+        auto sprite = mSpriteHandler.get(id);
 
         if(nullptr == sprite)
         {
@@ -64,19 +64,119 @@ namespace ch2d
         return true;
     }
 
-    void System::sprite_setTexture(unsigned int spriteId, unsigned int textureId)
+    bool System::sprite_setScale(unsigned int id, LUA_NUMBER x, LUA_NUMBER y)
     {
-        std::shared_ptr<sf::Sprite> sprite = mSpriteHandler.get(spriteId);
+        auto sprite = mSpriteHandler.get(id);
 
-        std::shared_ptr<sf::Texture> texture = mTextureHandler.get(textureId);
+        if(nullptr == sprite)
+        {
+            return false;
+        }
 
-        sprite->setTexture(*texture);
+        sprite->setScale(x, y);
+
+        return true;
     }
 
-    void System::sprite_setTextureRect(unsigned int id, LUA_NUMBER x, LUA_NUMBER y, LUA_NUMBER width, LUA_NUMBER height)
+    bool System::sprite_setTexture(unsigned int spriteId, unsigned int textureId)
     {
-        std::shared_ptr<sf::Sprite> sprite = mSpriteHandler.get(id);
+        auto sprite = mSpriteHandler.get(spriteId);
+
+        auto texture = mTextureHandler.get(textureId);
+
+        if(nullptr == sprite || nullptr == texture)
+        {
+            return false;
+        }
+
+        sprite->setTexture(*texture);
+
+        return true;
+    }
+
+    bool System::sprite_setTextureRect(unsigned int id, LUA_NUMBER x, LUA_NUMBER y, LUA_NUMBER width, LUA_NUMBER height)
+    {
+        auto sprite = mSpriteHandler.get(id);
+
+        if(nullptr == sprite)
+        {
+            return false;
+        }
 
         sprite->setTextureRect(sf::IntRect(x, y, width, height));
+
+        return true;
+    }
+
+    std::tuple<LUA_NUMBER, LUA_NUMBER> System::sprite_getPosition(unsigned int id)
+    {
+        std::tuple<LUA_NUMBER, LUA_NUMBER> data {0.f, 0.f};
+
+        auto sprite = mSpriteHandler.get(id);
+
+        if(nullptr == sprite)
+        {
+            return data;
+        }
+
+        auto position = sprite->getPosition();
+
+        data = std::make_tuple(position.x, position.y);
+
+        return data;
+    }
+
+    std::tuple<LUA_NUMBER, LUA_NUMBER> System::sprite_getOrigin(unsigned int id)
+    {
+        std::tuple<LUA_NUMBER, LUA_NUMBER> data {0.f, 0.f};
+
+        auto sprite = mSpriteHandler.get(id);
+
+        if(nullptr == sprite)
+        {
+            return data;
+        }
+
+        auto origin = sprite->getOrigin();
+
+        data = std::make_tuple(origin.x, origin.y);
+
+        return data;
+    }
+
+    LUA_NUMBER System::sprite_getRotation(unsigned int id)
+    {
+        LUA_NUMBER data {0.f};
+
+        auto sprite = mSpriteHandler.get(id);
+
+        if(nullptr == sprite)
+        {
+            return data;
+        }
+
+        auto rotation = sprite->getRotation();
+
+        data = rotation;
+
+        return data;
+    }
+
+    std::tuple<LUA_NUMBER, LUA_NUMBER> System::sprite_getScale(unsigned int id)
+    {
+        std::tuple<LUA_NUMBER, LUA_NUMBER> data {0.f, 0.f};
+
+        auto sprite = mSpriteHandler.get(id);
+
+        if(nullptr == sprite)
+        {
+            return data;
+        }
+
+        auto scale = sprite->getScale();
+
+        data = std::make_tuple(scale.x, scale.y);
+
+        return data;
     }
 }

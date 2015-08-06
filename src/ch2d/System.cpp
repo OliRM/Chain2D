@@ -48,9 +48,14 @@ namespace ch2d
             "setPosition",    &System::sprite_setPosition,
             "setOrigin",      &System::sprite_setOrigin,
             "setRotation",    &System::sprite_setRotation,
+            "setScale",       &System::sprite_setScale,
             "remove",         &System::sprite_remove,
             "setTexture",     &System::sprite_setTexture,
-            "setTextureRect", &System::sprite_setTextureRect
+            "setTextureRect", &System::sprite_setTextureRect,
+            "getPosition",    &System::sprite_getPosition,
+            "getOrigin",      &System::sprite_getOrigin,
+            "getRotation",    &System::sprite_getRotation,
+            "getScale",       &System::sprite_getScale
         );
 
         // Texture interface bindings
@@ -73,15 +78,16 @@ namespace ch2d
 
         // View interface bindings
         mLuaState["ch2d"]["view"].SetObj(*this,
-            "create",    &System::view_create,
-            "remove",    &System::view_remove,
-            "setCenter", &System::view_setCenter
-        );
-
-        // Viewport interface bindings
-        mLuaState["ch2d"]["viewport"].SetObj(*this,
-            "create", &System::viewport_create,
-            "remove", &System::viewport_remove
+            "create",      &System::view_create,
+            "remove",      &System::view_remove,
+            "setCenter",   &System::view_setCenter,
+            "setSize",     &System::view_setSize,
+            "setRotation", &System::view_setRotation,
+            "setViewport", &System::view_setViewport,
+            "getCenter",   &System::view_getCenter,
+            "getSize",     &System::view_getSize,
+            "getRotation", &System::view_getRotation,
+            "getViewport", &System::view_getViewport
         );
 
         mLuaState.Load("game/game.lua");

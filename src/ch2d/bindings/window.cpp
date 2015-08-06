@@ -5,7 +5,7 @@ namespace ch2d
 {
     void System::window_setView(unsigned int id)
     {
-        std::shared_ptr<sf::View> view = mViewHandler.get(id);
+        auto view = mViewHandler.get(id);
 
         mRenderWindow.setView(*view);
     }

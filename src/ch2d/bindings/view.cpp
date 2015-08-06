@@ -13,10 +13,131 @@ namespace ch2d
         return mViewHandler.remove(id);
     }
 
-    void System::view_setCenter(unsigned int id, LUA_NUMBER x, LUA_NUMBER y)
+    bool System::view_setCenter(unsigned int id, LUA_NUMBER x, LUA_NUMBER y)
     {
-        std::shared_ptr<sf::View> view = mViewHandler.get(id);
+        auto view = mViewHandler.get(id);
 
-        view->setCenter(std::floor(x), std::floor(y));
+        if(nullptr == view)
+        {
+            return false;
+        }
+
+        view->setCenter(x, y);
+
+        return true;
+    }
+
+    bool System::view_setSize(unsigned int id, LUA_NUMBER width, LUA_NUMBER height)
+    {
+        auto view = mViewHandler.get(id);
+
+        if(nullptr == view)
+        {
+            return false;
+        }
+
+        view->setSize(width, height);
+
+        return true;
+    }
+
+    bool System::view_setRotation(unsigned int id, LUA_NUMBER degrees)
+    {
+        auto view = mViewHandler.get(id);
+
+        if(nullptr == view)
+        {
+            return false;
+        }
+
+        view->setRotation(degrees);
+
+        return true;
+    }
+
+    bool System::view_setViewport(unsigned int id, LUA_NUMBER x, LUA_NUMBER y, LUA_NUMBER width, LUA_NUMBER height)
+    {
+        auto view = mViewHandler.get(id);
+
+        if(nullptr == view)
+        {
+            return false;
+        }
+
+        view->setViewport(sf::FloatRect(x, y, width, height));
+
+        return true;
+    }
+
+    std::tuple<LUA_NUMBER, LUA_NUMBER> System::view_getCenter(unsigned int id)
+    {
+        std::tuple<LUA_NUMBER, LUA_NUMBER> data {0.f, 0.f};
+
+        auto view = mViewHandler.get(id);
+
+        if(nullptr == view)
+        {
+            return  data;
+        }
+
+        auto center = view->getCenter();
+
+        data = std::make_tuple(center.x, center.y);
+
+        return data;
+    }
+
+    std::tuple<LUA_NUMBER, LUA_NUMBER> System::view_getSize(unsigned int id)
+    {
+        std::tuple<LUA_NUMBER, LUA_NUMBER> data {0.f, 0.f};
+
+        auto view = mViewHandler.get(id);
+
+        if(nullptr == view)
+        {
+            return data;
+        }
+
+        auto size = view->getSize();
+
+        data = std::make_tuple(size.x, size.y);
+
+        return data;
+    }
+
+    LUA_NUMBER System::view_getRotation(unsigned int id)
+    {
+        LUA_NUMBER data {0.f};
+
+        auto view = mViewHandler.get(id);
+
+        if(nullptr == view)
+        {
+            return data;
+        }
+
+        auto rotation = view->getRotation();
+
+        data = rotation;
+
+        return data;
+    }
+
+    std::tuple<LUA_NUMBER, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER> System::view_getViewport(unsigned int id)
+    {
+        std::tuple<LUA_NUMBER, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER> data {0.f, 0.f, 0.f, 0.f};
+
+        auto view = mViewHandler.get(id);
+
+        if(nullptr == view)
+        {
+            return data;
+        }
+
+        auto viewport = view->getViewport();
+
+        data = std::make_tuple(viewport.left, viewport.top, viewport.width, viewport.height);
+
+        return data;
     }
 }

@@ -8,7 +8,7 @@
 int main(int argc, char* argv[])
 {
 	// Create engine
-	std::shared_ptr<ch2d::System> app = std::make_shared<ch2d::System>();
+	auto app = std::make_shared<ch2d::System>();
 
 	// Process command line arguments
 	app->processArguments(argc, argv);

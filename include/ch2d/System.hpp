@@ -11,7 +11,6 @@
 #include <ch2d/handlers/SpriteHandler.hpp>
 #include <ch2d/handlers/EventHandler.hpp>
 #include <ch2d/handlers/ViewHandler.hpp>
-#include <ch2d/handlers/ViewportHandler.hpp>
 
 // SFML
 #include <SFML/Window.hpp>
@@ -48,7 +47,7 @@ namespace ch2d
 
         // General functions
         void cleanup(void);
-        
+
         // Render window
         sf::RenderWindow mRenderWindow;
 
@@ -69,7 +68,6 @@ namespace ch2d
         SpriteHandler   mSpriteHandler;
         EventHandler    mEventHandler;
         ViewHandler     mViewHandler;
-        ViewportHandler mViewportHandler;
 
         // Lua State
         sel::State mLuaState;
@@ -87,8 +85,13 @@ namespace ch2d
         bool         sprite_setPosition(unsigned int, LUA_NUMBER, LUA_NUMBER);
         bool         sprite_setOrigin(unsigned int, LUA_NUMBER, LUA_NUMBER);
         bool         sprite_setRotation(unsigned int, LUA_NUMBER);
-        void         sprite_setTexture(unsigned int, unsigned int);
-        void         sprite_setTextureRect(unsigned int, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER);
+        bool         sprite_setScale(unsigned int, LUA_NUMBER, LUA_NUMBER);
+        bool         sprite_setTexture(unsigned int, unsigned int);
+        bool         sprite_setTextureRect(unsigned int, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER);
+        std::tuple<LUA_NUMBER, LUA_NUMBER> sprite_getPosition(unsigned int);
+        std::tuple<LUA_NUMBER, LUA_NUMBER> sprite_getOrigin(unsigned int);
+        LUA_NUMBER                         sprite_getRotation(unsigned int);
+        std::tuple<LUA_NUMBER, LUA_NUMBER> sprite_getScale(unsigned int);
 
         // Texture Lua bindings
         bool         texture_remove(unsigned int);
@@ -105,11 +108,14 @@ namespace ch2d
         // View Lua bindings
         unsigned int view_create(LUA_NUMBER, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER);
         bool         view_remove(unsigned int);
-        void         view_setCenter(unsigned int, LUA_NUMBER, LUA_NUMBER);
-
-        // Viewport Methods
-        unsigned int viewport_create(LUA_NUMBER, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER);
-        bool         viewport_remove(unsigned int);
+        bool         view_setCenter(unsigned int, LUA_NUMBER, LUA_NUMBER);
+        bool         view_setSize(unsigned int, LUA_NUMBER, LUA_NUMBER);
+        bool         view_setRotation(unsigned int, LUA_NUMBER);
+        bool         view_setViewport(unsigned int, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER);
+        std::tuple<LUA_NUMBER, LUA_NUMBER>  view_getCenter(unsigned int);
+        std::tuple<LUA_NUMBER, LUA_NUMBER>  view_getSize(unsigned int);
+        LUA_NUMBER                          view_getRotation(unsigned int);
+        std::tuple<LUA_NUMBER, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER> view_getViewport(unsigned int);
     };
 }
 
