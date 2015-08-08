@@ -1,89 +1,114 @@
-# ch2d
-A small, barebones 2D framework used to create games in Lua, built with C++ and SFML.
-
-Currenty incomplete.
+# Chain 2D :neckbeard:
+A small, barebones 2D engine used to create games in Lua, built with C++ and SFML.
 
 ## Requirements
 
-*  Cmake >= 2.8
 *  Lua >= 5.2
 *  SFML >= 2.0
-
-## Notes
-
-*  Uses Jeremy Ong's Lua bindings, Selene. (https://github.com/jeremyong/Selene)
-*  Creating or loading an asset, i.e. sprite, texture, view etc, returns an unsigned integer used for referencing. The integer is used to uniquely reference an object of the specified type. Assignment operations, such as spriteA = spriteB will not copy the object, but rather the reference. Calling ch2d.sprite.remove(spriteA) will destroy the object that both spriteA and spriteB point to.
+*  A fully C++11 compliant compiler
 
 ## Example
-```Lua
+
+``` Lua
 -- game.lua
 
--- Create the sprite
+-- Create a sprite
 sprite = ch2d.sprite.create()
 
--- Load the texture
+-- Load a texture
 texture = ch2d.texture.load("example.png")
 
 -- Set the sprite's texture
 ch2d.sprite.setTexture(sprite, texture)
 
--- Move the sprite
-ch2d.sprite.setPosition(320, 240)
+-- Set the sprite's origin
+ch2d.sprite.setOrigin(sprite, 16, 16)
 
 function ch2d.update(dt)
-  -- Draw the sprite every frame
+  -- Move the sprite to the the mouse's current location on the screen
+  ch2d.sprite.setPosition(sprite, ch2d.mouse.x(), ch2d.mouse.y())
+  
+  -- Draw the sprite
   ch2d.sprite.draw(sprite)
 end
-
 ```
 
-## Todo
-*  Parse command line arguments
-  * Currently "game/game.lua" is hardcoded to load.
-*  Support configuration files
-*  Update bindings
-  *  sound bindings
-  *  SFML shape bindings (circle, rectangle)
-  *  window modification bindings
-*  Lua native quadtree and collision detection
-*  Create a set of Lua constants equivelent to the sf::Keyboard::Keys SFML enumeration
+## Bindings
 
-## Currently supported bindings
+###### System bindings
 
-####ch2d.sprite
+``` Lua
+void ch2d.system.quit(void)
+```
 
-*  create
-*  draw
-*  remove
-*  setPosition
-*  setOrigin
-*  setRotation
-*  remove
-*  setTexture
-*  setTextureRect
+----
 
-####ch2d.texture
+###### Window bindings
 
-*  load
-*  remove
+``` Lua
+bool ch2d.window.setView(unsigned int)
+```
 
-####ch2d.keyboard
+----
 
-*  isDown
+###### Sprite bindings
 
-####ch2d.mouse
+``` Lua
+unsigned int   ch2d.sprite.create(void)
+bool           ch2d.sprite.draw(unsigned int)
+bool           ch2d.sprite.remove(unsigned int)
+bool           ch2d.sprite.setPosition(unsigned int, double, double)
+bool           ch2d.sprite.setOrigin(unsigned int, double, double)
+bool           ch2d.sprite.setRotation(unsigned int, double)
+bool           ch2d.sprite.setScale(unsigned int, double, double)
+bool           ch2d.sprite.setTexture(unsigned int, unsigned int)
+bool           ch2d.sprite.setTextureRect(unsigned int, double, double, double, double)
+double, double ch2d.sprite.getPosition(unsigned int)
+double, double ch2d.sprite.getOrigin(unsigned int)
+double         ch2d.sprite.getRotation(unsigned int)
+double, double ch2d.sprite.getScale(unsigned int)
+```
 
-*  x
-*  y
-*  isDown
+----
 
-####ch2d.view
+###### Texture bindings
 
-*  create
-*  remove
-*  setCenter
+``` Lua
+unsigned int ch2d.texture.load(string)
+bool         ch2d.texture.remove(unsigned int)
+```
 
-####ch2d.viewport
+----
 
-*  create
-*  remove
+###### Keyboard bindings
+
+``` Lua
+bool ch2d.keyboard.isDown(unsigned int)
+```
+
+----
+
+###### Mouse bindings
+
+``` Lua
+double ch2d.mouse.x(void)
+double ch2d.mouse.y(void)
+bool   ch2d.mouse.isDown(unsigned int)
+```
+
+----
+
+###### View bindings
+
+``` Lua
+unsigned int                   ch2d.view.create(double, double, double, double)
+bool                           ch2d.view.remove(unsigned int)
+bool                           ch2d.view.setCenter(unsigned int, double, double)
+bool                           ch2d.view.setSize(unsigned int, double, double)
+bool                           ch2d.view.setRotation(unsigned int, double)
+bool                           ch2d.view.setViewport(unsigned int, double, double, double, double)
+double, double                 ch2d.view.getCenter(unsigned int)
+double, double                 ch2d.view.getSize(unsigned int)
+double                         ch2d.view.getRotation(unsigned int)
+double, double, double, double ch2d.view.getViewport(unsigned int)
+```
