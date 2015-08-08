@@ -1,4 +1,4 @@
-# ch2d
+# Chain 2D :neckbeard:
 A small, barebones 2D engine used to create games in Lua, built with C++ and SFML.
 
 ## Requirements
@@ -35,7 +35,7 @@ end
 
 ## Bindings
 
-##### System bindings
+###### System bindings
 
 ``` Lua
 void ch2d.system.quit(void)
@@ -43,7 +43,7 @@ void ch2d.system.quit(void)
 
 ----
 
-##### Window bindings
+###### Window bindings
 
 ``` Lua
 bool ch2d.window.setView(unsigned int)
@@ -51,7 +51,7 @@ bool ch2d.window.setView(unsigned int)
 
 ----
 
-##### Sprite bindings
+###### Sprite bindings
 
 ``` Lua
 unsigned int   ch2d.sprite.create(void)
@@ -71,7 +71,7 @@ double, double ch2d.sprite.getScale(unsigned int)
 
 ----
 
-##### Texture bindings
+###### Texture bindings
 
 ``` Lua
 unsigned int ch2d.texture.load(string)
@@ -80,7 +80,7 @@ bool         ch2d.texture.remove(unsigned int)
 
 ----
 
-##### Keyboard bindings
+###### Keyboard bindings
 
 ``` Lua
 bool ch2d.keyboard.isDown(unsigned int)
@@ -88,7 +88,7 @@ bool ch2d.keyboard.isDown(unsigned int)
 
 ----
 
-##### Mouse bindings
+###### Mouse bindings
 
 ``` Lua
 double ch2d.mouse.x(void)
