@@ -56,6 +56,7 @@ namespace ch2d
         unsigned int  mHeight;
         unsigned int  mBitsPerPixel;
         sf::VideoMode mVideoMode;
+        unsigned int  mFramerate;
         std::string   mTitle;
         uint32_t      mStyle;
 

@@ -11,6 +11,7 @@ namespace ch2d
         mHeight       {480},
         mBitsPerPixel {32},
         mVideoMode    {mWidth, mHeight, mBitsPerPixel},
+        mFramerate    {120},
         mTitle        {"Untitled"},
         mStyle        {sf::Style::Default},
 
@@ -24,7 +25,7 @@ namespace ch2d
         mRenderWindow.create(mVideoMode, mTitle, mStyle);
 
         // Set framerate limit
-        mRenderWindow.setFramerateLimit(120);
+        mRenderWindow.setFramerateLimit(mFramerate);
 
         // Load the config file, and initialize the environment
         mLuaState.Load("lua/ch2d/ch2d.lua");
@@ -89,18 +90,27 @@ namespace ch2d
             "getRotation", &System::view_getRotation,
             "getViewport", &System::view_getViewport
         );
-
-        mLuaState.Load("game/game.lua");
     }
 
     void System::processArguments(int argc, char* argv[])
     {
+        if(argc != 2)
+        {
+            std::cout << "Usage: " << argv[0] << " <lua filename>" << std::endl;
 
+            return;
+        }
+
+        if(!mLuaState.Load(argv[1]))
+        {
+            std::cout << "Unable to load file: \"" << argv[1] << "\"" << std::endl;
+        }
+
+        mRunning = {true};
     }
 
     int System::run(void)
     {
-        mRunning = {true};
         mCurrentTime = std::chrono::high_resolution_clock::now();
 
         while(mRunning)
