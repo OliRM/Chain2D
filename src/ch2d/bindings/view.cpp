@@ -3,9 +3,9 @@
 
 namespace ch2d
 {
-    unsigned int System::view_create(LUA_NUMBER x, LUA_NUMBER y, LUA_NUMBER width, LUA_NUMBER height)
+    unsigned int System::view_create(void)
     {
-        return mViewHandler.create(x, y, width, height);
+        return mViewHandler.create();
     }
 
     bool System::view_remove(unsigned int id)
@@ -55,7 +55,7 @@ namespace ch2d
         return true;
     }
 
-    bool System::view_setViewport(unsigned int id, LUA_NUMBER x, LUA_NUMBER y, LUA_NUMBER width, LUA_NUMBER height)
+    bool System::view_setViewport(unsigned int id, LUA_NUMBER top, LUA_NUMBER left, LUA_NUMBER width, LUA_NUMBER height)
     {
         auto view = mViewHandler.get(id);
 
@@ -64,7 +64,7 @@ namespace ch2d
             return false;
         }
 
-        view->setViewport(sf::FloatRect(x, y, width, height));
+        view->setViewport(sf::FloatRect(top, top, width, height));
 
         return true;
     }

@@ -61,8 +61,13 @@ namespace ch2d
 
         // Texture interface bindings
         mLuaState["ch2d"]["texture"].SetObj(*this,
-            "load",   &System::texture_load,
-            "remove", &System::texture_remove
+            "create",         &System::texture_create,
+            "loadFromFile", &System::texture_loadFromFile,
+            "setRepeated",  &System::texture_setRepeated,
+            "setSmooth",    &System::texture_setSmooth,
+            "isRepeated",   &System::texture_isRepeated,
+            "isSmooth",     &System::texture_isSmooth,
+            "remove",       &System::texture_remove
         );
 
         // Keyboard interface bindings
@@ -143,6 +148,6 @@ namespace ch2d
 
     void System::quit(void)
     {
-        mRunning = false;
+        mRunning = {false};
     }
 }

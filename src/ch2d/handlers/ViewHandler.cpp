@@ -3,11 +3,11 @@
 
 namespace ch2d
 {
-    unsigned int ViewHandler::create(float x, float y, float width, float height)
+    unsigned int ViewHandler::create(void)
     {
         unsigned int id = 0;
 
-        std::shared_ptr<sf::View> view = std::make_shared<sf::View>(sf::FloatRect(x, y, width, height));
+        std::shared_ptr<sf::View> view = std::make_shared<sf::View>();
 
         id = mPointerStorage.add(view);
 

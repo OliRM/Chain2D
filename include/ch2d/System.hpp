@@ -95,8 +95,13 @@ namespace ch2d
         std::tuple<LUA_NUMBER, LUA_NUMBER> sprite_getScale(unsigned int);
 
         // Texture Lua bindings
+        unsigned int texture_create(void);
+        bool         texture_loadFromFile(unsigned int, std::string);
+        bool         texture_setRepeated(unsigned int, bool);
+        bool         texture_setSmooth(unsigned int, bool);
+        bool         texture_isRepeated(unsigned int);
+        bool         texture_isSmooth(unsigned int);
         bool         texture_remove(unsigned int);
-        unsigned int texture_load(std::string);
 
         // Keyboard Lua bindings
         bool keyboard_isDown(unsigned int);
@@ -107,7 +112,7 @@ namespace ch2d
         bool       mouse_isDown(unsigned int);
 
         // View Lua bindings
-        unsigned int view_create(LUA_NUMBER, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER);
+        unsigned int view_create(void);
         bool         view_remove(unsigned int);
         bool         view_setCenter(unsigned int, LUA_NUMBER, LUA_NUMBER);
         bool         view_setSize(unsigned int, LUA_NUMBER, LUA_NUMBER);

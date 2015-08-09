@@ -15,7 +15,7 @@ namespace ch2d
     class TextureHandler : public Handler<sf::Texture>
     {
     public:
-        unsigned int load(const std::string&);
+        unsigned int create(void);
     };
 }
 
