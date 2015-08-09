@@ -40,7 +40,7 @@ if(SFML_FOUND)
   target_link_libraries(${EXECUTABLE_NAME} ${SFML_LIBRARIES})
 endif()
 
-find_package(Lua 5.2 REQUIRED)
+find_package(Lua REQUIRED)
 if(LUA_FOUND)
    include_directories(${LUA_INCLUDE_DIR})
    target_link_libraries(${EXECUTABLE_NAME} ${LUA_LIBRARIES})
