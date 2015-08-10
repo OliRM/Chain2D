@@ -1,5 +1,5 @@
-# Chain 2D :neckbeard:
-A small, barebones 2D engine used to create games in Lua, built with C++ and SFML.
+# Chain 2D
+A small, basic 2D engine used to create games in Lua, built with C++ and SFML.
 
 ## Requirements
 
