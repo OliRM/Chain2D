@@ -53,11 +53,11 @@ namespace ch2d
         sf::RenderWindow mRenderWindow;
 
         // Default render window settings
-        unsigned int  mWidth;
-        unsigned int  mHeight;
-        unsigned int  mBitsPerPixel;
+        size_t        mWidth;
+        size_t        mHeight;
+        size_t        mBitsPerPixel;
         sf::VideoMode mVideoMode;
-        unsigned int  mFramerate;
+        size_t        mFramerate;
         std::string   mTitle;
         uint32_t      mStyle;
 

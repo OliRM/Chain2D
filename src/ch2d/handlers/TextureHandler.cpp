@@ -3,9 +3,9 @@
 
 namespace ch2d
 {
-    unsigned int TextureHandler::create(void)
+    size_t TextureHandler::create(void)
     {
-        unsigned int id = 0;
+        size_t id = 0;
 
         std::shared_ptr<sf::Texture> texture = std::make_shared<sf::Texture>();
 

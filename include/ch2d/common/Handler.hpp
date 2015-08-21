@@ -13,19 +13,19 @@ namespace ch2d
     class Handler
     {
     public:
-        std::shared_ptr<T> get(unsigned int);
-        bool remove(unsigned int);
+        std::shared_ptr<T> get(size_t);
+        bool remove(size_t);
         PointerStorage<T> mPointerStorage;
     };
 
     template <class T>
-    std::shared_ptr<T> Handler<T>::get(unsigned int id)
+    std::shared_ptr<T> Handler<T>::get(size_t id)
     {
         return mPointerStorage.get(id);
     }
 
     template <class T>
-    bool Handler<T>::remove(unsigned int id)
+    bool Handler<T>::remove(size_t id)
     {
         return mPointerStorage.remove(id);
     }

@@ -3,9 +3,9 @@
 
 namespace ch2d
 {
-    unsigned int ViewHandler::create(void)
+    size_t ViewHandler::create(void)
     {
-        unsigned int id = 0;
+        size_t id = 0;
 
         std::shared_ptr<sf::View> view = std::make_shared<sf::View>();
 

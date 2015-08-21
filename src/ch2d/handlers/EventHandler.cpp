@@ -53,7 +53,7 @@ namespace ch2d
         }
     }
 
-    bool EventHandler::keyboard_isDown(unsigned int key)
+    bool EventHandler::keyboard_isDown(size_t key)
     {
         return mKeys[key];
     }
@@ -68,7 +68,7 @@ namespace ch2d
         return mMouse.y;
     }
 
-    bool EventHandler::mouse_isDown(unsigned int button)
+    bool EventHandler::mouse_isDown(size_t button)
     {
         return mMouse.buttons[button];
     }

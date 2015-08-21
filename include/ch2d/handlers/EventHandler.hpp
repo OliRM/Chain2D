@@ -35,12 +35,12 @@ namespace ch2d
         void update(void);
 
         // Keyboard methods
-        bool keyboard_isDown(unsigned int);
+        bool keyboard_isDown(size_t);
 
         // Mouse methods
         LUA_NUMBER mouse_x(void);
         LUA_NUMBER mouse_y(void);
-        bool mouse_isDown(unsigned int);
+        bool mouse_isDown(size_t);
 
     private:
         // Window reference

@@ -15,7 +15,7 @@ namespace ch2d
     class SpriteHandler : public Handler<sf::Sprite>
     {
     public:
-        unsigned int create(void);
+        size_t create(void);
     };
 }
 

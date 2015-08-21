@@ -16,7 +16,7 @@ namespace ch2d
     class ViewHandler : public Handler<sf::View>
     {
     public:
-        unsigned int create(void);
+        size_t create(void);
     };
 }
 

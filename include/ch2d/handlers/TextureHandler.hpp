@@ -15,7 +15,7 @@ namespace ch2d
     class TextureHandler : public Handler<sf::Texture>
     {
     public:
-        unsigned int create(void);
+        size_t create(void);
     };
 }
 

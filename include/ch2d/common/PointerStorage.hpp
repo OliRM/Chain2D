@@ -15,17 +15,17 @@ namespace ch2d
     	// Add the shared pointer to the vector
     	// Arguments: The shared pointer to be added to the vector
     	// Returns: Integer used to identify the shared pointer
-    	unsigned int add(std::shared_ptr<T>);
+    	size_t add(std::shared_ptr<T>);
 
     	// Gets the shared pointer from the vector
     	// Arguments: The integer provided by the add() method
     	// Returns: The shared pointer
-    	std::shared_ptr<T> get(unsigned int) const;
+    	std::shared_ptr<T> get(size_t) const;
 
     	// Removes the shared pointer from the vector
     	// Arguments: The integer provided by the add() method
     	// Returns: Whether or not the shared pointer was successfully removed
-    	bool remove(unsigned int);
+    	bool remove(size_t);
 
     	// Clears all stored pointers
     	// Arguments: none
@@ -34,17 +34,17 @@ namespace ch2d
 
     	private:
     	// List of free spaces in the storage vector
-    	std::stack<unsigned int> mFreelist;
+    	std::stack<size_t> mFreelist;
 
     	// Vector to store shared pointers
     	std::vector<std::shared_ptr<T> > mPointers;
     };
 
     template <class T>
-    unsigned int PointerStorage<T>::add(std::shared_ptr<T> ref)
+    size_t PointerStorage<T>::add(std::shared_ptr<T> ref)
     {
     	// Integer used to locate pointer in storage vector
-    	unsigned int id = 0;
+    	size_t id = 0;
 
     	// If there are any free locations in the storage vector
     	if(mFreelist.size() > 0)
@@ -72,7 +72,7 @@ namespace ch2d
     }
 
     template <class T>
-    std::shared_ptr<T> PointerStorage<T>::get(unsigned int id) const
+    std::shared_ptr<T> PointerStorage<T>::get(size_t id) const
     {
     	// If provided id is outside the bounds of the storage vector
     	if(id > mPointers.size())
@@ -86,7 +86,7 @@ namespace ch2d
     }
 
     template <class T>
-    bool PointerStorage<T>::remove(unsigned int id)
+    bool PointerStorage<T>::remove(size_t id)
     {
     	// If provided id is outside the bounds of the storage vector
     	if(id > mPointers.size())

@@ -14,7 +14,7 @@ namespace ch2d
 {
     class ShapeHandler : public Handler<sf::Shape>
     {
-        
+
     };
 }
 

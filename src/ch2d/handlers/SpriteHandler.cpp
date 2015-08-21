@@ -3,9 +3,9 @@
 
 namespace ch2d
 {
-    unsigned int SpriteHandler::create(void)
+    size_t SpriteHandler::create(void)
     {
-        unsigned int id = 0;
+        size_t id = 0;
 
         std::shared_ptr<sf::Sprite> sprite = std::make_shared<sf::Sprite>();
 
