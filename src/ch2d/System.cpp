@@ -59,6 +59,27 @@ namespace ch2d
             "getScale",       &System::sprite_getScale
         );
 
+        // Shape interface bindings
+        mLuaState["ch2d"]["shape"].SetObj(*this,
+            "setTexture",          &System::shape_setTexture,
+            "setTextureRect",      &System::shape_setTextureRect,
+            "setFillColor",        &System::shape_setFillColor,
+            "setOutlineColor",     &System::shape_setOutlineColor,
+            "setOutlineThickness", &System::shape_setOutlineThickness,
+            "setPosition",         &System::shape_setPosition,
+            "setOrigin",           &System::shape_setOrigin,
+            "setRotation",         &System::shape_setRotation,
+            "setScale",            &System::shape_setScale,
+            "getTextureRect",      &System::shape_getTextureRect,
+            "getFillColor",        &System::shape_getFillColor,
+            "getOutlineColor",     &System::shape_getOutlineColor,
+            "getOutlineThickness", &System::shape_getOutlineThickness,
+            "getPosition",         &System::shape_getPosition,
+            "getOrigin",           &System::shape_getOrigin,
+            "getRotation",         &System::shape_getRotation,
+            "getScale",            &System::shape_getScale
+        );
+
         // Texture interface bindings
         mLuaState["ch2d"]["texture"].SetObj(*this,
             "create",         &System::texture_create,
@@ -109,6 +130,8 @@ namespace ch2d
         if(!mLuaState.Load(argv[1]))
         {
             std::cout << "Unable to load file: \"" << argv[1] << "\"" << std::endl;
+
+            return;
         }
 
         mRunning = {true};

@@ -9,6 +9,7 @@
 // ch2d
 #include <ch2d/handlers/TextureHandler.hpp>
 #include <ch2d/handlers/SpriteHandler.hpp>
+#include <ch2d/handlers/ShapeHandler.hpp>
 #include <ch2d/handlers/EventHandler.hpp>
 #include <ch2d/handlers/ViewHandler.hpp>
 
@@ -65,10 +66,11 @@ namespace ch2d
         std::chrono::nanoseconds mDeltaTime;
 
         // Asset handlers
-        TextureHandler  mTextureHandler;
-        SpriteHandler   mSpriteHandler;
-        EventHandler    mEventHandler;
-        ViewHandler     mViewHandler;
+        TextureHandler mTextureHandler;
+        SpriteHandler  mSpriteHandler;
+        ShapeHandler   mShapeHandler;
+        EventHandler   mEventHandler;
+        ViewHandler    mViewHandler;
 
         // Lua State
         sel::State mLuaState;
@@ -93,6 +95,25 @@ namespace ch2d
         std::tuple<LUA_NUMBER, LUA_NUMBER> sprite_getOrigin(unsigned int);
         LUA_NUMBER                         sprite_getRotation(unsigned int);
         std::tuple<LUA_NUMBER, LUA_NUMBER> sprite_getScale(unsigned int);
+
+        // Shape Lua bindings
+        bool shape_setTexture(unsigned int, unsigned int);
+        bool shape_setTextureRect(unsigned int, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER);
+        bool shape_setFillColor(unsigned int, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER);
+        bool shape_setOutlineColor(unsigned int, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER);
+        bool shape_setOutlineThickness(unsigned int, LUA_NUMBER);
+        bool shape_setPosition(unsigned int, LUA_NUMBER, LUA_NUMBER);
+        bool shape_setOrigin(unsigned int, LUA_NUMBER, LUA_NUMBER);
+        bool shape_setRotation(unsigned int, LUA_NUMBER);
+        bool shape_setScale(unsigned int, LUA_NUMBER, LUA_NUMBER);
+        std::tuple<LUA_NUMBER, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER> shape_getTextureRect(unsigned int);
+        std::tuple<LUA_NUMBER, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER> shape_getFillColor(unsigned int);
+        std::tuple<LUA_NUMBER, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER> shape_getOutlineColor(unsigned int);
+        LUA_NUMBER shape_getOutlineThickness(unsigned int);
+        std::tuple<LUA_NUMBER, LUA_NUMBER> shape_getPosition(unsigned int);
+        std::tuple<LUA_NUMBER, LUA_NUMBER> shape_getOrigin(unsigned int);
+        LUA_NUMBER shape_getRotation(unsigned int);
+        std::tuple<LUA_NUMBER, LUA_NUMBER> shape_getScale(unsigned int);
 
         // Texture Lua bindings
         unsigned int texture_create(void);

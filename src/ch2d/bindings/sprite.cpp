@@ -94,7 +94,7 @@ namespace ch2d
         return true;
     }
 
-    bool System::sprite_setTextureRect(unsigned int id, LUA_NUMBER x, LUA_NUMBER y, LUA_NUMBER width, LUA_NUMBER height)
+    bool System::sprite_setTextureRect(unsigned int id, LUA_NUMBER top, LUA_NUMBER left, LUA_NUMBER width, LUA_NUMBER height)
     {
         auto sprite = mSpriteHandler.get(id);
 
@@ -103,7 +103,7 @@ namespace ch2d
             return false;
         }
 
-        sprite->setTextureRect(sf::IntRect(x, y, width, height));
+        sprite->setTextureRect(sf::IntRect(top, left, width, height));
 
         return true;
     }
