@@ -42,13 +42,13 @@ if(SFML_FOUND)
   target_link_libraries(${EXECUTABLE_NAME} ${SFML_LIBRARIES})
 endif()
 
-find_package(Lua 5.2 REQUIRED)
+find_package(Lua REQUIRED)
 if(LUA_FOUND)
    include_directories(${LUA_INCLUDE_DIR})
    target_link_libraries(${EXECUTABLE_NAME} ${LUA_LIBRARIES})
 endif()
 
-add_definitions ("-Wall")
+add_definitions ("-Wall -DLUA_COMPAT_5_2")
 target_compile_features(ch2d PRIVATE cxx_range_for)
 
 install(TARGETS ${EXECUTABLE_NAME} DESTINATION bin)
