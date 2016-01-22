@@ -91,6 +91,7 @@ void ch2d.system.quit(void)
 ###### Window bindings
 
 ``` Lua
+bool ch2d.window.draw(unsigned int)
 bool ch2d.window.setView(unsigned int)
 ```
 
