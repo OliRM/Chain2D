@@ -37,7 +37,7 @@ function ch2d.update(dt)
   ch2d.sprite.setPosition(sprite, ch2d.mouse.x(), ch2d.mouse.y())
   
   -- Draw the sprite
-  ch2d.sprite.draw(sprite)
+  ch2d.window.draw(sprite)
 end
 ```
 
@@ -101,7 +101,6 @@ bool ch2d.window.setView(unsigned int)
 ``` Lua
 unsigned int   ch2d.sprite.create(void)
 bool           ch2d.sprite.remove(unsigned int)
-bool           ch2d.sprite.draw(unsigned int)
 bool           ch2d.sprite.setPosition(unsigned int, double, double)
 bool           ch2d.sprite.setOrigin(unsigned int, double, double)
 bool           ch2d.sprite.setRotation(unsigned int, double)
