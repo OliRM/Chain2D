@@ -5,7 +5,7 @@ namespace ch2d
 {
     bool System::shape_setTexture(unsigned int shapeId, unsigned int textureId)
     {
-        auto shape = mShapeHandler.get(shapeId);
+        auto shape = static_cast<sf::Shape*>((mDrawableHandler.get(shapeId)).get());
 
         auto texture = mTextureHandler.get(textureId);
 
@@ -21,7 +21,7 @@ namespace ch2d
 
     bool System::shape_setTextureRect(unsigned int id, LUA_NUMBER top, LUA_NUMBER left, LUA_NUMBER width, LUA_NUMBER height)
     {
-        auto shape = mShapeHandler.get(id);
+        auto shape = static_cast<sf::Shape*>((mDrawableHandler.get(id)).get());
 
         if(nullptr == shape)
         {
@@ -35,7 +35,7 @@ namespace ch2d
 
     bool System::shape_setFillColor(unsigned int id, LUA_NUMBER r, LUA_NUMBER g, LUA_NUMBER b, LUA_NUMBER a)
     {
-        auto shape = mShapeHandler.get(id);
+        auto shape = static_cast<sf::Shape*>((mDrawableHandler.get(id)).get());
 
         if(nullptr == shape)
         {
@@ -49,7 +49,7 @@ namespace ch2d
 
     bool System::shape_setOutlineColor(unsigned int id, LUA_NUMBER r, LUA_NUMBER g , LUA_NUMBER b, LUA_NUMBER a)
     {
-        auto shape = mShapeHandler.get(id);
+        auto shape = static_cast<sf::Shape*>((mDrawableHandler.get(id)).get());
 
         if(nullptr == shape)
         {
@@ -63,7 +63,7 @@ namespace ch2d
 
     bool System::shape_setOutlineThickness(unsigned int id, LUA_NUMBER thickness)
     {
-        auto shape = mShapeHandler.get(id);
+        auto shape = static_cast<sf::Shape*>((mDrawableHandler.get(id)).get());
 
         if(nullptr == shape)
         {
@@ -77,7 +77,7 @@ namespace ch2d
 
     bool System::shape_setPosition(unsigned int id, LUA_NUMBER x, LUA_NUMBER y)
     {
-        auto shape = mShapeHandler.get(id);
+        auto shape = static_cast<sf::Shape*>((mDrawableHandler.get(id)).get());
 
         if(nullptr == shape)
         {
@@ -91,7 +91,7 @@ namespace ch2d
 
     bool System::shape_setOrigin(unsigned int id, LUA_NUMBER x, LUA_NUMBER y)
     {
-        auto shape = mShapeHandler.get(id);
+        auto shape = static_cast<sf::Shape*>((mDrawableHandler.get(id)).get());
 
         if(nullptr == shape)
         {
@@ -104,7 +104,7 @@ namespace ch2d
     }
     bool System::shape_setRotation(unsigned int id, LUA_NUMBER rotation)
     {
-        auto shape = mShapeHandler.get(id);
+        auto shape = static_cast<sf::Shape*>((mDrawableHandler.get(id)).get());
 
         if(nullptr == shape)
         {
@@ -118,7 +118,7 @@ namespace ch2d
 
     bool System::shape_setScale(unsigned int id, LUA_NUMBER x, LUA_NUMBER y)
     {
-        auto shape = mShapeHandler.get(id);
+        auto shape = static_cast<sf::Shape*>((mDrawableHandler.get(id)).get());
 
         if(nullptr == shape)
         {
@@ -134,7 +134,7 @@ namespace ch2d
     {
         std::tuple<LUA_NUMBER, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER> data {0.f, 0.f, 0.f, 0.f};
 
-        auto shape = mShapeHandler.get(id);
+        auto shape = static_cast<sf::Shape*>((mDrawableHandler.get(id)).get());
 
         if(nullptr == shape)
         {
@@ -152,7 +152,7 @@ namespace ch2d
     {
         std::tuple<LUA_NUMBER, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER> data {0.f, 0.f, 0.f, 0.f};
 
-        auto shape = mShapeHandler.get(id);
+        auto shape = static_cast<sf::Shape*>((mDrawableHandler.get(id)).get());
 
         if(nullptr == shape)
         {
@@ -170,7 +170,7 @@ namespace ch2d
     {
         std::tuple<LUA_NUMBER, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER> data {0.f, 0.f, 0.f, 0.f};
 
-        auto shape = mShapeHandler.get(id);
+        auto shape = static_cast<sf::Shape*>((mDrawableHandler.get(id)).get());
 
         if(nullptr == shape)
         {
@@ -186,7 +186,7 @@ namespace ch2d
 
     LUA_NUMBER System::shape_getOutlineThickness(unsigned int id)
     {
-        auto shape = mShapeHandler.get(id);
+        auto shape = static_cast<sf::Shape*>((mDrawableHandler.get(id)).get());
 
         if(nullptr == shape)
         {
@@ -200,7 +200,7 @@ namespace ch2d
     {
         std::tuple<LUA_NUMBER, LUA_NUMBER> data {0.f, 0.f};
 
-        auto shape = mShapeHandler.get(id);
+        auto shape = static_cast<sf::Shape*>((mDrawableHandler.get(id)).get());
 
         if(nullptr == shape)
         {
@@ -218,7 +218,7 @@ namespace ch2d
     {
         std::tuple<LUA_NUMBER, LUA_NUMBER> data {0.f, 0.f};
 
-        auto shape = mShapeHandler.get(id);
+        auto shape = static_cast<sf::Shape*>((mDrawableHandler.get(id)).get());
 
         if(nullptr == shape)
         {
@@ -234,7 +234,7 @@ namespace ch2d
 
     LUA_NUMBER System::shape_getRotation(unsigned int id)
     {
-        auto shape = mShapeHandler.get(id);
+        auto shape = static_cast<sf::Shape*>((mDrawableHandler.get(id)).get());
 
         if(nullptr == shape)
         {
@@ -248,7 +248,7 @@ namespace ch2d
     {
         std::tuple<LUA_NUMBER, LUA_NUMBER> data {0.f, 0.f};
 
-        auto shape = mShapeHandler.get(id);
+        auto shape = static_cast<sf::Shape*>((mDrawableHandler.get(id)).get());
 
         if(nullptr == shape)
         {

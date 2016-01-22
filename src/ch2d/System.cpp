@@ -38,20 +38,20 @@ namespace ch2d
 
         // Window interface bindings
         mLuaState["ch2d"]["window"].SetObj(*this,
+            "draw",    &System::window_draw,
             "setView", &System::window_setView
         );
 
         // Sprite interface bindings
         mLuaState["ch2d"]["sprite"].SetObj(*this,
             "create",         &System::sprite_create,
-            "draw",           &System::sprite_draw,
             "remove",         &System::sprite_remove,
             "setPosition",    &System::sprite_setPosition,
             "setOrigin",      &System::sprite_setOrigin,
             "setRotation",    &System::sprite_setRotation,
             "setScale",       &System::sprite_setScale,
             "remove",         &System::sprite_remove,
-            "setTexture",     &System::sprite_setTexture,
+            //"setTexture",     &System::sprite_setTexture,
             "setTextureRect", &System::sprite_setTextureRect,
             "getPosition",    &System::sprite_getPosition,
             "getOrigin",      &System::sprite_getOrigin,
@@ -80,9 +80,16 @@ namespace ch2d
             "getScale",            &System::shape_getScale
         );
 
+        // Rectangle Shape interface bindings
+        mLuaState["ch2d"]["shape"]["rectangle"].SetObj(*this,
+            "create",  &System::shape_rectangle_create,
+            "setSize", &System::shape_rectangle_setSize,
+            "getSize", &System::shape_rectangle_getSize
+        );
+
         // Texture interface bindings
         mLuaState["ch2d"]["texture"].SetObj(*this,
-            "create",         &System::texture_create,
+            "create",       &System::texture_create,
             "loadFromFile", &System::texture_loadFromFile,
             "setRepeated",  &System::texture_setRepeated,
             "setSmooth",    &System::texture_setSmooth,

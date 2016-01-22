@@ -7,11 +7,8 @@
 #include <cmath>
 
 // ch2d
-#include <ch2d/handlers/TextureHandler.hpp>
-#include <ch2d/handlers/SpriteHandler.hpp>
-#include <ch2d/handlers/ShapeHandler.hpp>
 #include <ch2d/handlers/EventHandler.hpp>
-#include <ch2d/handlers/ViewHandler.hpp>
+#include <ch2d/common/PointerStorage.hpp>
 
 // SFML
 #include <SFML/Window.hpp>
@@ -65,12 +62,11 @@ namespace ch2d
         std::chrono::high_resolution_clock::time_point mCurrentTime, mNextTime;
         std::chrono::nanoseconds mDeltaTime;
 
-        // Asset handlers
-        TextureHandler mTextureHandler;
-        SpriteHandler  mSpriteHandler;
-        ShapeHandler   mShapeHandler;
-        EventHandler   mEventHandler;
-        ViewHandler    mViewHandler;
+        // Handlers
+        EventHandler                 mEventHandler;
+        PointerStorage<sf::Drawable> mDrawableHandler;
+        PointerStorage<sf::Texture>  mTextureHandler;
+        PointerStorage<sf::View>     mViewHandler;
 
         // Lua State
         sel::State mLuaState;
@@ -79,17 +75,17 @@ namespace ch2d
         void system_quit(void);
 
         // Window Lua bindings
+        void window_draw(unsigned int);
         void window_setView(unsigned int);
 
         // Sprite Lua bindings
         unsigned int sprite_create(void);
-        bool         sprite_draw(unsigned int);
         bool         sprite_remove(unsigned int);
         bool         sprite_setPosition(unsigned int, LUA_NUMBER, LUA_NUMBER);
         bool         sprite_setOrigin(unsigned int, LUA_NUMBER, LUA_NUMBER);
         bool         sprite_setRotation(unsigned int, LUA_NUMBER);
         bool         sprite_setScale(unsigned int, LUA_NUMBER, LUA_NUMBER);
-        bool         sprite_setTexture(unsigned int, unsigned int);
+        //bool         sprite_setTexture(unsigned int, unsigned int);
         bool         sprite_setTextureRect(unsigned int, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER);
         std::tuple<LUA_NUMBER, LUA_NUMBER> sprite_getPosition(unsigned int);
         std::tuple<LUA_NUMBER, LUA_NUMBER> sprite_getOrigin(unsigned int);
@@ -97,6 +93,7 @@ namespace ch2d
         std::tuple<LUA_NUMBER, LUA_NUMBER> sprite_getScale(unsigned int);
 
         // Shape Lua bindings
+        bool shape_delete(void);
         bool shape_setTexture(unsigned int, unsigned int);
         bool shape_setTextureRect(unsigned int, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER);
         bool shape_setFillColor(unsigned int, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER);
@@ -109,20 +106,30 @@ namespace ch2d
         std::tuple<LUA_NUMBER, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER> shape_getTextureRect(unsigned int);
         std::tuple<LUA_NUMBER, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER> shape_getFillColor(unsigned int);
         std::tuple<LUA_NUMBER, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER> shape_getOutlineColor(unsigned int);
-        LUA_NUMBER shape_getOutlineThickness(unsigned int);
+        LUA_NUMBER                         shape_getOutlineThickness(unsigned int);
         std::tuple<LUA_NUMBER, LUA_NUMBER> shape_getPosition(unsigned int);
         std::tuple<LUA_NUMBER, LUA_NUMBER> shape_getOrigin(unsigned int);
-        LUA_NUMBER shape_getRotation(unsigned int);
+        LUA_NUMBER                         shape_getRotation(unsigned int);
         std::tuple<LUA_NUMBER, LUA_NUMBER> shape_getScale(unsigned int);
+
+        // Rectangle Shape Lua bindings
+        unsigned int shape_rectangle_create(void);
+        bool         shape_rectangle_setSize(unsigned int, LUA_NUMBER, LUA_NUMBER);
+        std::tuple<LUA_NUMBER, LUA_NUMBER> shape_rectangle_getSize(unsigned int);
+
+        // Circle Shape Lua bindings
+        unsigned int shape_circle_create(void);
+        bool         shape_circle_setRadius(unsigned int, LUA_NUMBER);
+        LUA_NUMBER   shape_circle_getRadius(unsigned int);
 
         // Texture Lua bindings
         unsigned int texture_create(void);
+        bool         texture_remove(unsigned int);
         bool         texture_loadFromFile(unsigned int, std::string);
         bool         texture_setRepeated(unsigned int, bool);
         bool         texture_setSmooth(unsigned int, bool);
         bool         texture_isRepeated(unsigned int);
         bool         texture_isSmooth(unsigned int);
-        bool         texture_remove(unsigned int);
 
         // Keyboard Lua bindings
         bool keyboard_isDown(unsigned int);
@@ -139,9 +146,9 @@ namespace ch2d
         bool         view_setSize(unsigned int, LUA_NUMBER, LUA_NUMBER);
         bool         view_setRotation(unsigned int, LUA_NUMBER);
         bool         view_setViewport(unsigned int, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER);
-        std::tuple<LUA_NUMBER, LUA_NUMBER>  view_getCenter(unsigned int);
-        std::tuple<LUA_NUMBER, LUA_NUMBER>  view_getSize(unsigned int);
-        LUA_NUMBER                          view_getRotation(unsigned int);
+        std::tuple<LUA_NUMBER, LUA_NUMBER>                         view_getCenter(unsigned int);
+        std::tuple<LUA_NUMBER, LUA_NUMBER>                         view_getSize(unsigned int);
+        LUA_NUMBER                                                 view_getRotation(unsigned int);
         std::tuple<LUA_NUMBER, LUA_NUMBER, LUA_NUMBER, LUA_NUMBER> view_getViewport(unsigned int);
     };
 }

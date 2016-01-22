@@ -5,7 +5,13 @@ namespace ch2d
 {
     unsigned int System::view_create(void)
     {
-        return mViewHandler.create();
+        size_t id = 0;
+
+        std::shared_ptr<sf::View> view = std::make_shared<sf::View>();
+
+        id = mViewHandler.add(view);
+
+        return id;
     }
 
     bool System::view_remove(unsigned int id)

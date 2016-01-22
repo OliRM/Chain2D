@@ -5,7 +5,11 @@ namespace ch2d
 {
     unsigned int System::texture_create(void)
     {
-        unsigned int id = mTextureHandler.create();
+        unsigned int id = 0;
+
+        auto texture = std::make_shared<sf::Texture>();
+
+        id = mTextureHandler.add(texture);
 
         return id;
     }

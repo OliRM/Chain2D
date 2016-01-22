@@ -13,10 +13,17 @@ namespace ch2d
     class Handler
     {
     public:
+        bool add(std::shared_ptr<T>)
         std::shared_ptr<T> get(size_t);
         bool remove(size_t);
         PointerStorage<T> mPointerStorage;
     };
+
+    template <class T>
+    bool Handler<T>::add(std::shared_ptr<T> obj)
+    {
+        return mPointerStorage.add(obj);
+    }
 
     template <class T>
     std::shared_ptr<T> Handler<T>::get(size_t id)

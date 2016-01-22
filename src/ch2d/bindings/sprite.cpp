@@ -5,26 +5,23 @@ namespace ch2d
 {
     unsigned int System::sprite_create(void)
     {
-        return mSpriteHandler.create();
-    }
+        unsigned int id = 0;
 
-    bool System::sprite_draw(unsigned int id)
-    {
-        auto sprite = mSpriteHandler.get(id);
+        std::shared_ptr<sf::Drawable> sprite = std::make_shared<sf::Sprite>();
 
-        mRenderWindow.draw(*sprite);
+        id = mDrawableHandler.add(sprite);
 
-        return true;
+        return id;
     }
 
     bool System::sprite_remove(unsigned int id)
     {
-        return mSpriteHandler.remove(id);
+        return mDrawableHandler.remove(id);
     }
 
     bool System::sprite_setPosition(unsigned int id, LUA_NUMBER x, LUA_NUMBER y)
     {
-        auto sprite = mSpriteHandler.get(id);
+        auto sprite = static_cast<sf::Sprite*>((mDrawableHandler.get(id)).get());
 
         if(nullptr == sprite)
         {
@@ -38,7 +35,7 @@ namespace ch2d
 
     bool System::sprite_setOrigin(unsigned int id, LUA_NUMBER x, LUA_NUMBER y)
     {
-        auto sprite = mSpriteHandler.get(id);
+        auto sprite = static_cast<sf::Sprite*>((mDrawableHandler.get(id)).get());
 
         if(nullptr == sprite)
         {
@@ -52,7 +49,7 @@ namespace ch2d
 
     bool System::sprite_setRotation(unsigned int id, LUA_NUMBER rotation)
     {
-        auto sprite = mSpriteHandler.get(id);
+        auto sprite = static_cast<sf::Sprite*>((mDrawableHandler.get(id)).get());
 
         if(nullptr == sprite)
         {
@@ -66,7 +63,7 @@ namespace ch2d
 
     bool System::sprite_setScale(unsigned int id, LUA_NUMBER x, LUA_NUMBER y)
     {
-        auto sprite = mSpriteHandler.get(id);
+        auto sprite = static_cast<sf::Sprite*>((mDrawableHandler.get(id)).get());
 
         if(nullptr == sprite)
         {
@@ -78,11 +75,11 @@ namespace ch2d
         return true;
     }
 
-    bool System::sprite_setTexture(unsigned int spriteId, unsigned int textureId)
+    /*bool System::sprite_setTexture(unsigned int spriteId, unsigned int textureId)
     {
-        auto sprite = mSpriteHandler.get(spriteId);
+        auto sprite = static_cast<sf::Sprite*>((mDrawableHandler.get(spriteId)).get());
 
-        auto texture = mTextureHandler.get(textureId);
+        auto texture = static_cast<sf::Texture*>((mDrawableHandler.get(textureId)).get());
 
         if(nullptr == sprite || nullptr == texture)
         {
@@ -92,11 +89,11 @@ namespace ch2d
         sprite->setTexture(*texture);
 
         return true;
-    }
+    }*/
 
     bool System::sprite_setTextureRect(unsigned int id, LUA_NUMBER top, LUA_NUMBER left, LUA_NUMBER width, LUA_NUMBER height)
     {
-        auto sprite = mSpriteHandler.get(id);
+        auto sprite = static_cast<sf::Sprite*>((mDrawableHandler.get(id)).get());
 
         if(nullptr == sprite)
         {
@@ -112,7 +109,7 @@ namespace ch2d
     {
         std::tuple<LUA_NUMBER, LUA_NUMBER> data {0.f, 0.f};
 
-        auto sprite = mSpriteHandler.get(id);
+        auto sprite = static_cast<sf::Sprite*>((mDrawableHandler.get(id)).get());
 
         if(nullptr == sprite)
         {
@@ -130,7 +127,7 @@ namespace ch2d
     {
         std::tuple<LUA_NUMBER, LUA_NUMBER> data {0.f, 0.f};
 
-        auto sprite = mSpriteHandler.get(id);
+        auto sprite = static_cast<sf::Sprite*>((mDrawableHandler.get(id)).get());
 
         if(nullptr == sprite)
         {
@@ -148,7 +145,7 @@ namespace ch2d
     {
         LUA_NUMBER data {0.f};
 
-        auto sprite = mSpriteHandler.get(id);
+        auto sprite = static_cast<sf::Sprite*>((mDrawableHandler.get(id)).get());
 
         if(nullptr == sprite)
         {
@@ -166,7 +163,7 @@ namespace ch2d
     {
         std::tuple<LUA_NUMBER, LUA_NUMBER> data {0.f, 0.f};
 
-        auto sprite = mSpriteHandler.get(id);
+        auto sprite = static_cast<sf::Sprite*>((mDrawableHandler.get(id)).get());
 
         if(nullptr == sprite)
         {

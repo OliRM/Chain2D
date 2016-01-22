@@ -15,7 +15,7 @@ function Sprite:remove()
 end
 
 function Sprite:draw()
-	return ch2d.sprite.draw(self.id)
+	return ch2d.window.draw(self.id)
 end
 
 function Sprite:remove()

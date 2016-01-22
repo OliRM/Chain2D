@@ -19,11 +19,7 @@ set(EXECUTABLE_NAME "ch2d")
 add_executable(${EXECUTABLE_NAME}
     src/ch2d/ch2d.cpp
     src/ch2d/System.cpp
-    src/ch2d/handlers/TextureHandler.cpp
-    src/ch2d/handlers/SpriteHandler.cpp
-    src/ch2d/handlers/ShapeHandler.cpp
     src/ch2d/handlers/EventHandler.cpp
-    src/ch2d/handlers/ViewHandler.cpp
     src/ch2d/bindings/sprite.cpp
     src/ch2d/bindings/texture.cpp
     src/ch2d/bindings/keyboard.cpp
@@ -32,6 +28,8 @@ add_executable(${EXECUTABLE_NAME}
     src/ch2d/bindings/window.cpp
     src/ch2d/bindings/system.cpp
     src/ch2d/bindings/shape.cpp
+    src/ch2d/bindings/shape_rectangle.cpp
+    src/ch2d/bindings/shape_circle.cpp
 )
 
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake_modules" ${CMAKE_MODULE_PATH})
